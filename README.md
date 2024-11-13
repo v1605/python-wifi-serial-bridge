@@ -31,7 +31,7 @@ This request will print out "Hello\nWorld\n", waiting two seconds after each lin
 }
 ```
 
-##Configurtation 
+## Configurtation 
 The following values are updateable via the config.ini
 * baudrate: The baudrate the serial device is exepcting
 * device: The serial device to write to. On Linux, this will be something like "/dev/ttyUSB0". On Windows, it will be something like "COM8".
