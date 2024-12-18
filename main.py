@@ -7,21 +7,25 @@ from flask import Flask, request
 config = configparser.ConfigParser()
 config.read('config.ini')
 baudrate = config.getint('SerialConfig', 'baudrate')
-port = config.get('SerialConfig', 'port')
+port = int(config.get('SerialConfig', 'port'))
 device = config.get('SerialConfig', 'device')
 
 # Initialize Flask Server
 app = Flask(__name__)
 ser = serial.Serial(port=device,baudrate=baudrate,parity=serial.PARITY_NONE,xonxoff=True,timeout=1,dsrdtr=False)
 
+#consts
+delay_key='delay'
+ending_key='ending'
+
 #Handle Serial Writing
 def send_to_serial(data):
     delay = 0
     ending = ""
-    if 'delay' in data:
-        delay = data['delay'] / 1000
-    if 'ending' in data:
-        ending = data['ending']
+    if delay_key in data and data[delay_key] is not None:
+        delay = int(data[delay_key]) / 1000
+    if ending_key in data and data[ending_key] is not None:
+        ending = data[ending_key]
     if ser.is_open:
         commands = data['commands']
         for command in commands:
