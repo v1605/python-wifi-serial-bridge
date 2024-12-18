@@ -45,14 +45,14 @@ commands:
 This request will print out "HelloWorld" with no new lines.
 ```json
 {
-  "comands": ["Hello", "World"]
+  "commands": ["Hello", "World"]
 }
 ```
 
 This request will print out "Hello\nWorld\n", waiting two seconds after each line.
 ```json
 {
-  "comands": ["Hello", "World"],
+  "commands": ["Hello", "World"],
   "delay": 2000,
   "ending": "\n"
 }
