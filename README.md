@@ -25,7 +25,7 @@ rest_command:
       Content-Type: "application/json; charset=utf-8"
     payload: >
       {
-        "ending": "\\n",
+        "ending": "\n",
         "delay": "{{ delay }}",
         "commands": {{ commands | tojson }}
       }
