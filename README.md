@@ -13,7 +13,34 @@ The web server responds to a post request. The body of the request is a json obj
 2. delay: (Optional) The amount of time in milliseconds to wait in between serial commands. Default value is 0.
 3. ending: (Optional) A string to append after every command (convience to avoid terminating every command). Default value is blank.
 
-## Examples
+## Home Assistant Config
+Here is an example of using Home Assisntant's [RESTful Command](https://www.home-assistant.io/integrations/rest_command/) to create a service that can send commands to the server (replace serverIp and port with your server's).
+```yaml
+rest_command:
+  retrotink4k_remote:
+    url: http://serverIp:5000
+    method: POST
+    headers:
+      accept: "application/json, text/html"
+      Content-Type: "application/json; charset=utf-8"
+    payload: >
+      {
+        "ending": "\\n",
+        "delay": "{{ delay }}",
+        "commands": {{ commands | tojson }}
+      }
+    verify_ssl: false
+```
+An example payload:
+```yaml
+delay: 200
+commands:
+ - "remote menu"
+ - "remote down"
+```
+
+
+## Json Examples
 
 This request will print out "HelloWorld" with no new lines.
 ```json
