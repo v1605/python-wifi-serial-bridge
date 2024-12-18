@@ -14,11 +14,11 @@ device = config.get('SerialConfig', 'device')
 app = Flask(__name__)
 ser = serial.Serial(port=device,baudrate=baudrate,parity=serial.PARITY_NONE,xonxoff=True,timeout=1,dsrdtr=False)
 
-#consts
+# Consts
 delay_key='delay'
 ending_key='ending'
 
-#Handle Serial Writing
+# Handle Serial Writing
 def send_to_serial(data):
     delay = 0
     ending = ""
