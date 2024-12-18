@@ -1,7 +1,7 @@
 # python-wifi-serial-bridge
 A python based web server to write serial commands to a connected device (such as the Retrotink 4k).
 
-##Required Libaries
+## Required Libaries
 * pySerial
 * flask
 
