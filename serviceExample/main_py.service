@@ -1,0 +1,13 @@
+[Unit]
+Description=Run the Serial-Wifi Bridge server
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi
+ExecStart=/bin/bash -c "source py_envs/bin/activate && python main.py"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
